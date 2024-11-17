@@ -2,8 +2,8 @@
 *.o
 
 #obj and bin
-OBJ/
-BIN/
+obj/
+bin/
 
 
 output.txt
