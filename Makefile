@@ -1,6 +1,6 @@
 # Compiler settings
 CXX = g++
-CXXFLAGS = -std=c++11 -Wall
+CXXFLAGS = -std=c++11 -Wall -O2
 
 # Directories
 SRC_DIR = src
@@ -13,7 +13,14 @@ OBJ_FILES = $(SRC_FILES:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 EXEC = $(BIN_DIR)/main
 
 # Default target
-all: $(EXEC)
+all: $(OBJ_DIR) $(BIN_DIR) $(EXEC)
+
+# Create directories
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
+$(BIN_DIR):
+	mkdir -p $(BIN_DIR)
 
 # Linking the executable
 $(EXEC): $(OBJ_FILES)
@@ -23,9 +30,9 @@ $(EXEC): $(OBJ_FILES)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Clean up object files and executable
+# Clean up
 clean:
-	rm -rf $(OBJ_DIR)/*.o $(BIN_DIR)/main
+	rm -rf $(OBJ_DIR) $(BIN_DIR)
 
 # Run the executable
 run: $(EXEC)
@@ -35,4 +42,3 @@ run: $(EXEC)
 rebuild: clean all
 
 .PHONY: all clean run rebuild
-

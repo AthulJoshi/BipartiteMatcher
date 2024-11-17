@@ -1,5 +1,9 @@
 #compiled files
 *.o
 
+#obj and bin
+OBJ/
+BIN/
+
 
 output.txt
