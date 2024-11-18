@@ -5,5 +5,7 @@
 obj/
 bin/
 
+.vscode/
+
 
 output.txt

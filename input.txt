@@ -1,11 +1,7 @@
-3 3
-Professor1
-Professor2
-Professor3
-Student1
-Student2
-Student3
-Professor1 Student1
-Professor2 Student2
-Professor3 Student3
-
+3 4
+Prof_1: Stu_1
+Prof_1: Stu_2
+Prof_2: Stu_1
+Prof_2: Stu_2
+Prof_2: Stu_3
+Prof_3: Stu_4
