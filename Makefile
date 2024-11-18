@@ -1,44 +1,39 @@
-# Compiler settings
+# Compiler and flags
 CXX = g++
-CXXFLAGS = -std=c++11 -Wall -O2
+CXXFLAGS = -std=c++17 -Wall -Wextra -O2
 
 # Directories
 SRC_DIR = src
 OBJ_DIR = obj
 BIN_DIR = bin
 
-# Files
-SRC_FILES = $(wildcard $(SRC_DIR)/*.cpp)
-OBJ_FILES = $(SRC_FILES:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
-EXEC = $(BIN_DIR)/main
+# Source files
+SOURCES = $(wildcard $(SRC_DIR)/*.cpp)
+OBJECTS = $(SOURCES:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
+
+# Executable
+EXECUTABLE = $(BIN_DIR)/bipartite_matcher
 
 # Default target
-all: $(OBJ_DIR) $(BIN_DIR) $(EXEC)
+all: $(EXECUTABLE)
 
-# Create directories
-$(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+# Create executable
+$(EXECUTABLE): $(OBJECTS)
+	@mkdir -p $(BIN_DIR)
+	$(CXX) $(CXXFLAGS) $^ -o $@
 
-$(BIN_DIR):
-	mkdir -p $(BIN_DIR)
-
-# Linking the executable
-$(EXEC): $(OBJ_FILES)
-	$(CXX) $(OBJ_FILES) -o $(EXEC)
-
-# Compiling source files to object files
+# Compile source files into object files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@mkdir -p $(OBJ_DIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Clean up
+# Run the program
+run: $(EXECUTABLE)
+	$(EXECUTABLE) input.txt
+
+# Clean build files
 clean:
-	rm -rf $(OBJ_DIR) $(BIN_DIR)
+	rm -rf $(OBJ_DIR) $(BIN_DIR) output.txt
 
-# Run the executable
-run: $(EXEC)
-	./$(EXEC)
-
-# Rebuild the project
-rebuild: clean all
-
-.PHONY: all clean run rebuild
+# Phony targets
+.PHONY: all clean run

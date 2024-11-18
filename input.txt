@@ -1,11 +1,6 @@
-3 3
-Professor1
-Professor2
-Professor3
-Student1
-Student2
-Student3
-Professor1 Student1
-Professor2 Student2
-Professor3 Student3
-
+P1 P2 P3
+S1 S2 S3
+P1 S1
+P1 S2
+P2 S2
+P3 S3

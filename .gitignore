@@ -4,6 +4,7 @@
 #obj and bin
 obj/
 bin/
+.vscode/
 
 
 output.txt
