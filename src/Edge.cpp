@@ -3,8 +3,8 @@
 #include <sstream>
 #include<string.h>
 
-Edge::Edge(int fromVertex, int toVertex, int capacity)
-    : fromVertex(fromVertex), toVertex(toVertex), capacity(capacity), flow(0) {}
+// Edge::Edge(int fromVertex, int toVertex, int capacity)
+//     : fromVertex(fromVertex), toVertex(toVertex), capacity(capacity), flow(0) {}
 
 int Edge::getOtherEndNode(int vertex) const {
     if (vertex == fromVertex) return toVertex;
